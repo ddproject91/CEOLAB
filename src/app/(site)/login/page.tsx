@@ -21,19 +21,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="wrap" style={{ maxWidth: 420, paddingTop: 32, paddingBottom: 100 }}>
-      <Link href="/" className="brandmark" style={{ marginBottom: 48, display: "inline-flex" }}>
-        <span className="badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-            <circle cx="11.5" cy="12.5" r="8.4" />
-            <rect x="7.6" y="12.2" width="1.9" height="4.3" rx="0.6" fill="currentColor" stroke="none" />
-            <rect x="10.6" y="9.6" width="1.9" height="6.9" rx="0.6" fill="currentColor" stroke="none" />
-            <rect x="13.6" y="7.1" width="1.9" height="9.4" rx="0.6" fill="currentColor" stroke="none" />
-            <path d="m19.4 4.3.5 1.3 1.3.5-1.3.5-.5 1.3-.5-1.3-1.3-.5 1.3-.5z" fill="currentColor" stroke="none" />
-          </svg>
-        </span>
-        <span className="word"><span className="w-ceo">CEO</span><span className="w-lab">LAB</span></span>
-      </Link>
+    <div className="wrap" style={{ maxWidth: 420, paddingTop: 48, paddingBottom: 100 }}>
       <p className="kicker" style={{ marginBottom: 8 }}>Welcome back</p>
       <h1 style={{ fontSize: 26, fontWeight: 700, margin: "0 0 24px", color: "var(--ink)" }}>
         로그인

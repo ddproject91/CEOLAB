@@ -144,6 +144,37 @@
   }
   nav.primary a:hover { background: var(--paper-sunken); color: var(--ink); }
 
+  .nav-dropdown { position: relative; display: inline-flex; }
+  .nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 6px;
+    min-width: 180px;
+    box-shadow: 0 12px 28px var(--shadow);
+    z-index: 30;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    display: block;
+  }
+  .nav-dropdown-menu a {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-secondary);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-dropdown-menu a:hover { background: var(--paper-sunken); color: var(--ink); }
+
   .masthead-actions {
     margin-left: auto;
     display: flex;
@@ -501,6 +532,44 @@
 
   .listing-date { font-size: 11.5px; color: var(--ink-muted); }
 
+  /* ---------- Franchise cards ---------- */
+
+  .franchise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .franchise-card {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .franchise-card .name { font-size: 15px; font-weight: 500; margin: 0; color: var(--ink); }
+
+  .franchise-card .desc {
+    font-size: 12.5px;
+    color: var(--ink-secondary);
+    line-height: 1.5;
+  }
+
+  .franchise-card .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+  .franchise-card .meta .fee { font-family: var(--font-mono); font-weight: 600; color: var(--ink); }
+
   /* ---------- Feed ---------- */
 
   .feed { display: flex; flex-direction: column; }
@@ -611,6 +680,7 @@
     .stat-row { grid-template-columns: repeat(2, 1fr); }
     .cat-grid { grid-template-columns: repeat(4, 1fr); }
     .listing-grid { grid-template-columns: repeat(2, 1fr); }
+    .franchise-grid { grid-template-columns: repeat(2, 1fr); }
     .feed-item { grid-template-columns: 70px 1fr; }
     .feed-stats { display: none; }
   }
@@ -619,6 +689,7 @@
     .wrap { padding: 0 16px; }
     .cat-grid { grid-template-columns: repeat(2, 1fr); }
     .listing-grid { grid-template-columns: 1fr; }
+    .franchise-grid { grid-template-columns: 1fr; }
     .stat-row { grid-template-columns: 1fr 1fr; }
     .btn-ghost { display: none; }
     .hero-actions { flex-direction: column; align-items: flex-start; }
