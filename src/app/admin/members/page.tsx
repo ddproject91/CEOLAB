@@ -13,7 +13,7 @@ export default async function AdminMembersPage() {
     const [{ data: profiles }, { data: usersRes }] = await Promise.all([
       supabase
         .from("profiles")
-        .select("id, role, signup_type, name, position, phone, memo, created_at")
+        .select("id, role, name, position, phone, memo, created_at")
         .order("created_at", { ascending: false }),
       supabase.auth.admin.listUsers({ perPage: 1000 }),
     ]);
@@ -24,7 +24,6 @@ export default async function AdminMembersPage() {
       id: p.id,
       email: emailById.get(p.id) ?? "",
       role: p.role,
-      signupType: p.signup_type,
       name: p.name ?? "",
       position: p.position ?? "",
       phone: p.phone ?? "",
@@ -40,8 +39,8 @@ export default async function AdminMembersPage() {
       </Link>
       <h1 className="mb-1 text-xl font-bold tracking-tight text-[#16233F]">회원 관리</h1>
       <p className="mb-6 text-sm text-gray-500">
-        가입 시 남긴 정보를 확인하고, 검토가 끝난 프랜차이즈 모집사·부동산업자에게 권한을 부여하세요.
-        신규 가입자는 전부 "고객" 등급으로 시작해요.
+        신규 가입자는 전부 &ldquo;고객&rdquo; 등급으로 시작해요. 프랜차이즈 모집사·부동산업자로
+        활동할 분이 별도로 문의해오면, 여기서 해당 계정의 권한을 바꿔주세요.
       </p>
 
       {!configured && (

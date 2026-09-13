@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import type { Role, SignupType } from "@/components/auth/AuthProvider";
+import type { Role } from "@/components/auth/AuthProvider";
 import { updateMemberRoleAction } from "./actions";
 
 export interface MemberRow {
   id: string;
   email: string;
   role: Role;
-  signupType: SignupType;
   name: string;
   position: string;
   phone: string;
@@ -22,11 +21,6 @@ const ROLE_LABEL: Record<Role, string> = {
   recruiter: "모집사",
   broker: "부동산",
   admin: "관리자",
-};
-const SIGNUP_TYPE_LABEL: Record<SignupType, string> = {
-  customer: "고객",
-  franchise: "프랜차이즈·가맹점 모집",
-  realestate: "부동산",
 };
 
 export function MembersEditor({ initialMembers }: { initialMembers: MemberRow[] }) {
@@ -67,7 +61,6 @@ export function MembersEditor({ initialMembers }: { initialMembers: MemberRow[] 
       <table className="w-full text-left text-sm">
         <thead>
           <tr className="border-b border-gray-200 bg-gray-50 text-xs text-gray-500">
-            <th className="px-4 py-3 font-medium">신청구분</th>
             <th className="px-4 py-3 font-medium">담당자명</th>
             <th className="px-4 py-3 font-medium">직급</th>
             <th className="px-4 py-3 font-medium">연락처</th>
@@ -80,7 +73,6 @@ export function MembersEditor({ initialMembers }: { initialMembers: MemberRow[] 
         <tbody>
           {members.map((m) => (
             <tr key={m.id} className="border-b border-gray-200 last:border-b-0">
-              <td className="px-4 py-3 text-gray-700">{SIGNUP_TYPE_LABEL[m.signupType]}</td>
               <td className="px-4 py-3 font-medium text-gray-900">{m.name || "-"}</td>
               <td className="px-4 py-3 text-gray-700">{m.position || "-"}</td>
               <td className="px-4 py-3 text-gray-700">{m.phone || "-"}</td>

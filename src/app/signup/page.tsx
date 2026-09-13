@@ -3,18 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useAuth, type SignupType } from "@/components/auth/AuthProvider";
-
-const SIGNUP_TYPES: { value: SignupType; label: string; hint: string }[] = [
-  { value: "customer", label: "예비창업자(고객)", hint: "브랜드 정보를 보고 상담을 요청하고 싶어요" },
-  { value: "franchise", label: "프랜차이즈 · 가맹점 모집사", hint: "브랜드를 등록하고 상담 리드를 받고 싶어요" },
-  { value: "realestate", label: "부동산업자", hint: "매물·상권 정보를 등록하고 싶어요" },
-];
+import { useAuth } from "@/components/auth/AuthProvider";
 
 export default function SignupPage() {
   const router = useRouter();
   const { signup, authError } = useAuth();
-  const [signupType, setSignupType] = useState<SignupType>("customer");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -26,7 +19,7 @@ export default function SignupPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSubmitting(true);
-    const ok = await signup({ email, password, signupType, name, position, phone, memo });
+    const ok = await signup({ email, password, name, position, phone, memo });
     setSubmitting(false);
     if (ok) router.push("/");
   }
@@ -50,43 +43,11 @@ export default function SignupPage() {
         회원가입
       </h1>
       <p style={{ color: "var(--ink-secondary)", fontSize: 14, margin: "0 0 32px" }}>
-        가입 후에는 고객 등급으로 시작해요. 프랜차이즈 모집사·부동산업자 권한은 신청 정보를
-        확인한 뒤 관리자가 개별적으로 부여해드려요.
+        모든 가입은 고객 등급으로 시작해요. 프랜차이즈 모집사·부동산업자로 활동하고 싶으시면
+        가입 후 관리자에게 별도로 문의해주세요.
       </p>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        <div>
-          <label className="mb-2 block text-sm font-medium" style={{ color: "var(--ink)" }}>
-            가입 유형
-          </label>
-          <div className="flex flex-col gap-2">
-            {SIGNUP_TYPES.map((t) => (
-              <label
-                key={t.value}
-                className="flex cursor-pointer items-start gap-3 rounded-xl border p-3 text-sm"
-                style={{
-                  borderColor: signupType === t.value ? "var(--accent)" : "var(--line)",
-                  background: signupType === t.value ? "var(--accent-soft)" : "var(--paper-raised)",
-                }}
-              >
-                <input
-                  type="radio"
-                  name="signupType"
-                  value={t.value}
-                  checked={signupType === t.value}
-                  onChange={() => setSignupType(t.value)}
-                  className="mt-1"
-                />
-                <span>
-                  <span style={{ fontWeight: 500, color: "var(--ink)" }}>{t.label}</span>
-                  <br />
-                  <span style={{ fontSize: 12, color: "var(--ink-muted)" }}>{t.hint}</span>
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
-
         <FormField label="이메일">
           <input
             type="email"
@@ -108,7 +69,7 @@ export default function SignupPage() {
           />
         </FormField>
 
-        <FormField label={signupType === "customer" ? "성함" : "담당자명"}>
+        <FormField label="성함">
           <input
             type="text"
             required
@@ -146,11 +107,7 @@ export default function SignupPage() {
             onChange={(e) => setMemo(e.target.value)}
             rows={3}
             className="form-input"
-            placeholder={
-              signupType === "customer"
-                ? "관심 있는 창업 분야나 지역을 적어주세요 (선택)"
-                : "회사 소개, 취급 브랜드/지역 등을 적어주세요 (선택)"
-            }
+            placeholder="관심 있는 창업 분야나 지역을 적어주세요 (선택)"
           />
         </FormField>
 
