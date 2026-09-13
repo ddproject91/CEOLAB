@@ -43,6 +43,13 @@ function ConsultForm() {
     }
   }, [user]);
 
+  useEffect(() => {
+    const brand = searchParams.get("brand");
+    if (brand) {
+      setMessage((prev) => prev || `[${brand}] 브랜드에 대해 상담받고 싶어요.`);
+    }
+  }, [searchParams]);
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!user) return;

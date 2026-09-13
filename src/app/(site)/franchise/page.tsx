@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getFranchiseBrands } from "@/data/franchise";
 
 export default async function FranchisePage() {
@@ -26,18 +27,27 @@ export default async function FranchisePage() {
           ) : (
             <div className="franchise-grid">
               {brands.map((b) => (
-                <div className="franchise-card" key={b.name}>
-                  <div className="tag-row">
-                    <span className="tag">{b.category}</span>
-                    <span className="tag">{b.region}</span>
+                <Link className="franchise-card" href={`/franchise/${b.id}`} key={b.id}>
+                  <div className="thumb">
+                    {b.imageUrl ? (
+                      <Image src={b.imageUrl} alt={b.name} fill sizes="(min-width: 900px) 33vw, 50vw" style={{ objectFit: "cover" }} />
+                    ) : (
+                      <span className="placeholder">{b.name.slice(0, 1)}</span>
+                    )}
                   </div>
-                  <h3 className="name">{b.name}</h3>
-                  <p className="desc">{b.description}</p>
-                  <div className="meta">
-                    <span>가맹비</span>
-                    <span className="fee tnum">{b.feeManwon.toLocaleString()}만원~</span>
+                  <div className="body">
+                    <div className="tag-row">
+                      <span className="tag">{b.category}</span>
+                      <span className="tag">{b.region}</span>
+                    </div>
+                    <h3 className="name">{b.name}</h3>
+                    <p className="desc">{b.description}</p>
+                    <div className="meta">
+                      <span>가맹비</span>
+                      <span className="fee tnum">{b.feeManwon.toLocaleString()}만원~</span>
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}
