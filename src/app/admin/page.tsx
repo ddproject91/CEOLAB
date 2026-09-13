@@ -42,6 +42,16 @@ export default async function AdminHomePage() {
         </div>
       )}
 
+      <div className="mb-6">
+        <Link
+          href="/admin/members"
+          className="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm transition-colors hover:border-[#C9A227]"
+        >
+          <span className="font-medium text-gray-900">회원 관리 (권한 부여)</span>
+          <span className="text-xs text-gray-400">→</span>
+        </Link>
+      </div>
+
       <div className="flex flex-col gap-6">
         {groups.map((group) => (
           <div key={group}>

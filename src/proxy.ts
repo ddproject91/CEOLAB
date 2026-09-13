@@ -1,12 +1,15 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { ADMIN_COOKIE_NAME, expectedAdminCookieValue } from "@/lib/adminAuth";
+import { refreshSession } from "@/lib/supabase/middleware";
 
 export async function proxy(request: NextRequest) {
+  const response = await refreshSession(request);
+
   if (!request.nextUrl.pathname.startsWith("/admin")) {
-    return NextResponse.next();
+    return response;
   }
   if (request.nextUrl.pathname.startsWith("/admin/login")) {
-    return NextResponse.next();
+    return response;
   }
 
   const expected = await expectedAdminCookieValue();
@@ -19,7 +22,7 @@ export async function proxy(request: NextRequest) {
 
   const cookie = request.cookies.get(ADMIN_COOKIE_NAME)?.value;
   if (cookie === expected) {
-    return NextResponse.next();
+    return response;
   }
 
   const loginUrl = new URL("/admin/login", request.url);
@@ -28,5 +31,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)"],
 };

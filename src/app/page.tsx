@@ -6,6 +6,7 @@ import {
   getHomeFeed,
 } from "@/data/home";
 import { CategoryIcon } from "@/components/CategoryIcon";
+import { AuthHeaderActions } from "@/components/auth/AuthHeaderActions";
 
 const FEED_TAG_LABEL: Record<string, string> = {
   q: "질문",
@@ -55,10 +56,7 @@ export default async function Home() {
             <a href="#listings">무권리 매물</a>
             <a href="#categories">창업분야</a>
           </nav>
-          <div className="masthead-actions">
-            <a className="btn btn-ghost" href="#feed">둘러보기</a>
-            <a className="btn btn-accent" href="#join">가입하기</a>
-          </div>
+          <AuthHeaderActions />
         </div>
       </header>
 
