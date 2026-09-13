@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
   :root {
-    --paper: #F4F5F7;
+    --paper: #F7F8FA;
     --paper-raised: #FFFFFF;
-    --paper-sunken: #E8EAEE;
+    --paper-sunken: #EEF1F4;
     --ink: #16233F;
     --ink-secondary: #4B5772;
     --ink-muted: #838EA6;
-    --line: #DEE1E8;
-    --line-strong: #C6CBD6;
+    --line: #E2E5EA;
+    --line-strong: #CDD2DA;
 
     --accent: #C9A227;
     --accent-deep: #8A6A16;
@@ -25,68 +25,12 @@
     --cat-review: #A34B5E;  --cat-review-soft: #F5DEE2;
     --cat-study: #5C58A8;   --cat-study-soft: #E4E2F5;
 
-    --shadow: rgba(23, 34, 39, 0.08);
-    --font-sans: 'IBM Plex Sans KR', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+    --shadow: rgba(23, 34, 39, 0.06);
+    --font-sans: var(--font-pretendard), 'Malgun Gothic', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #101B33;
-      --paper-raised: #182545;
-      --paper-sunken: #0B1428;
-      --ink: #F2F4F8;
-      --ink-secondary: #B7BFD6;
-      --ink-muted: #7C86A3;
-      --line: #263256;
-      --line-strong: #35406B;
-
-      --accent: #DDB752;
-      --accent-deep: #DDB752;
-      --accent-ink: #17223A;
-      --accent-soft: #3A331C;
-
-      --good: #63C08A;
-      --good-soft: #16281D;
-      --down: #E08475;
-      --down-soft: #331714;
-
-      --cat-q: #93A2C4;       --cat-q-soft: #232E4D;
-      --cat-info: #6FC2C4;    --cat-info-soft: #16302E;
-      --cat-review: #D98EA1;  --cat-review-soft: #3A1E27;
-      --cat-study: #A79FE0;   --cat-study-soft: #29254A;
-
-      --shadow: rgba(0, 0, 0, 0.45);
-    }
-  }
-
-  :root[data-theme="dark"] {
-    --paper: #101B33;
-    --paper-raised: #182545;
-    --paper-sunken: #0B1428;
-    --ink: #F2F4F8;
-    --ink-secondary: #B7BFD6;
-    --ink-muted: #7C86A3;
-    --line: #263256;
-    --line-strong: #35406B;
-
-    --accent: #DDB752;
-    --accent-deep: #DDB752;
-    --accent-ink: #17223A;
-    --accent-soft: #3A331C;
-
-    --good: #63C08A;
-    --good-soft: #16281D;
-    --down: #E08475;
-    --down-soft: #331714;
-
-    --cat-q: #93A2C4;       --cat-q-soft: #232E4D;
-    --cat-info: #6FC2C4;    --cat-info-soft: #16302E;
-    --cat-review: #D98EA1;  --cat-review-soft: #3A1E27;
-    --cat-study: #A79FE0;   --cat-study-soft: #29254A;
-
-    --shadow: rgba(0, 0, 0, 0.45);
-  }
+  /* 신뢰감이 중요한 상담·부동산 플랫폼이라 다크모드 없이 화이트 톤 하나로 고정 */
 
   * { box-sizing: border-box; }
 
@@ -97,8 +41,9 @@
     background: var(--paper);
     color: var(--ink);
     font-family: var(--font-sans);
+    font-weight: 400;
     font-size: 15px;
-    line-height: 1.55;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -118,7 +63,7 @@
     position: sticky;
     top: 0;
     z-index: 20;
-    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
   }
@@ -232,6 +177,7 @@
   .btn-ghost {
     background: transparent;
     color: var(--ink-secondary);
+    font-weight: 500;
     border: 1px solid var(--line-strong);
   }
   .btn-ghost:hover { background: var(--paper-sunken); color: var(--ink); }
@@ -270,6 +216,7 @@
 
   .hero h1 {
     font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
     line-height: 1.28;
     letter-spacing: -0.015em;
     margin: 0 0 16px;
@@ -278,12 +225,13 @@
   }
   .hero h1 em {
     font-style: normal;
-    color: var(--accent);
+    color: var(--accent-deep);
   }
 
   .hero p.lede {
     max-width: 56ch;
     color: var(--ink-secondary);
+    font-weight: 400;
     font-size: 16px;
     margin: 0 0 30px;
   }
@@ -308,6 +256,7 @@
 
   .stat-label {
     font-size: 12px;
+    font-weight: 400;
     color: var(--ink-muted);
     margin-bottom: 8px;
     display: flex;
@@ -354,6 +303,7 @@
   .block-head .kicker {
     font-family: var(--font-mono);
     font-size: 11px;
+    font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent-deep);
@@ -362,12 +312,14 @@
 
   .block-head h2 {
     font-size: 22px;
+    font-weight: 700;
     letter-spacing: -0.01em;
     margin: 0 0 6px;
   }
 
   .block-head p {
     color: var(--ink-secondary);
+    font-weight: 400;
     margin: 0;
     font-size: 14px;
     max-width: 60ch;
@@ -376,7 +328,7 @@
   .block-head .see-all {
     flex-shrink: 0;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--accent-deep);
     text-decoration: none;
     display: inline-flex;
@@ -412,7 +364,7 @@
 
   .cat-card .name {
     font-size: 13.5px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 3px;
   }
 
@@ -444,11 +396,12 @@
 
   .region-table td {
     padding: 13px 12px;
+    font-weight: 400;
     border-bottom: 1px solid var(--line);
   }
   .region-table tr:last-child td { border-bottom: none; }
 
-  .region-table td.name { font-weight: 600; }
+  .region-table td.name { font-weight: 500; }
   .region-table td.num { font-family: var(--font-mono); }
 
   .bar-cell { display: flex; align-items: center; gap: 10px; }
@@ -510,7 +463,7 @@
 
   .badge-free {
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--good);
     background: var(--good-soft);
     border-radius: 5px;
@@ -518,12 +471,12 @@
     white-space: nowrap;
   }
 
-  .listing-title { font-size: 15px; font-weight: 600; margin: 0; }
+  .listing-title { font-size: 15px; font-weight: 500; margin: 0; }
 
   .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag {
     font-size: 11.5px;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--ink-secondary);
     background: var(--paper-sunken);
     border-radius: 5px;
@@ -567,7 +520,7 @@
 
   .feed-tag {
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 500;
     padding: 4px 8px;
     border-radius: 5px;
     text-align: center;
@@ -580,7 +533,7 @@
 
   .feed-body .feed-title {
     font-size: 14.5px;
-    font-weight: 600;
+    font-weight: 500;
     margin: 0 0 5px;
     transition: color 0.15s ease;
   }
@@ -619,13 +572,14 @@
   footer .brandmark .w-lab { font-size: 11px; }
   footer p.tagline {
     color: var(--accent-deep);
-    font-weight: 600;
+    font-weight: 500;
     font-size: 12.5px;
     letter-spacing: 0.01em;
     margin: 12px 0 0;
   }
   footer p {
     color: var(--ink-muted);
+    font-weight: 400;
     font-size: 12.5px;
     max-width: 42ch;
     margin: 12px 0 0;
@@ -637,7 +591,7 @@
     flex-wrap: wrap;
   }
   .footer-links div { font-size: 12.5px; }
-  .footer-links strong { display: block; font-size: 11.5px; color: var(--ink-muted); font-weight: 600; letter-spacing: 0.03em; margin-bottom: 10px; text-transform: uppercase; }
+  .footer-links strong { display: block; font-size: 11.5px; color: var(--ink-muted); font-weight: 500; letter-spacing: 0.03em; margin-bottom: 10px; text-transform: uppercase; }
   .footer-links a { display: block; text-decoration: none; color: var(--ink-secondary); padding: 3px 0; }
   .footer-links a:hover { color: var(--ink); }
 
