@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   getHomeStats,
   getHomeCategories,
@@ -55,6 +56,7 @@ export default async function Home() {
             <a href="#regions">상권 정보</a>
             <a href="#listings">무권리 매물</a>
             <a href="#categories">창업분야</a>
+            <Link href="/consult">상담 신청</Link>
           </nav>
           <AuthHeaderActions />
         </div>

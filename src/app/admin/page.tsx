@@ -42,12 +42,26 @@ export default async function AdminHomePage() {
         </div>
       )}
 
-      <div className="mb-6">
+      <div className="mb-6 grid grid-cols-1 gap-2 sm:grid-cols-3">
         <Link
           href="/admin/members"
           className="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm transition-colors hover:border-[#C9A227]"
         >
           <span className="font-medium text-gray-900">회원 관리 (권한 부여)</span>
+          <span className="text-xs text-gray-400">→</span>
+        </Link>
+        <Link
+          href="/leads/franchise"
+          className="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm transition-colors hover:border-[#C9A227]"
+        >
+          <span className="font-medium text-gray-900">프랜차이즈 상담 요청</span>
+          <span className="text-xs text-gray-400">→</span>
+        </Link>
+        <Link
+          href="/leads/realestate"
+          className="flex items-center justify-between rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm transition-colors hover:border-[#C9A227]"
+        >
+          <span className="font-medium text-gray-900">부동산 상담 요청</span>
           <span className="text-xs text-gray-400">→</span>
         </Link>
       </div>

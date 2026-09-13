@@ -18,6 +18,15 @@ export function AuthHeaderActions() {
   if (user) {
     return (
       <div className="masthead-actions">
+        {(user.role === "recruiter" || user.role === "admin") && (
+          <Link href="/leads/franchise" className="btn btn-ghost">프랜차이즈 리드</Link>
+        )}
+        {(user.role === "broker" || user.role === "admin") && (
+          <Link href="/leads/realestate" className="btn btn-ghost">부동산 리드</Link>
+        )}
+        {user.role === "user" && (
+          <Link href="/consult" className="btn btn-ghost">상담 신청</Link>
+        )}
         <span style={{ fontSize: 13, color: "var(--ink-secondary)" }}>
           {user.name || user.email} <span style={{ color: "var(--accent-deep)" }}>· {ROLE_LABEL[user.role]}</span>
         </span>
